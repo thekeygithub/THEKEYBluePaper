@@ -1,0 +1,231 @@
+package com.bianque.sys.controller.hl7;
+
+import com.bianque.sys.service.hl7.Hl7Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@RestController
+@Component
+@RequestMapping("/hl7")
+public class Hl7Controller {
+    @Autowired
+    private Hl7Service hl7Service;
+
+    @Value("${spring.datasource.driver-class-name}")
+    private String className;
+
+    @Value("${spring.datasource.url}")
+    private String url;
+
+    @Value("${spring.datasource.username}")
+    private String dataBaseName;
+
+    @Value("${spring.datasource.password}")
+    private String pwd;
+
+    @RequestMapping(value = "/initHl7", method = RequestMethod.POST)
+    public Object initHl7(@Pagingable PagiParam pagi, @Sortingable SortParam sort, String tabValue) {
+        String tableName = getTableName(tabValue);
+
+        List<Map<String, Object>> initDatas = new ArrayList<>();
+        switch (tabValue) {
+            case "门急诊":
+                initDatas = hl7Service.initOutpatData();
+                break;
+            case "检查":
+                initDatas = hl7Service.initExamData();
+                break;
+            case "检验":
+                initDatas = hl7Service.initLabData();
+                break;
+            case "处方":
+                initDatas = hl7Service.initEdsData();
+                break;
+        }
+        Map<String, Object> ajaxResponse = new HashMap<>();
+
+        ajaxResponse.put("total", pagi.getTotalRows());
+        ajaxResponse.put("current", pagi.getCurrent());
+        ajaxResponse.put("pageSize", pagi.getPageSize());
+        ajaxResponse.put("initData", initDatas);
+        ajaxResponse.put("columnData", getColumns(tableName));
+
+        ajaxResponse.put("success", true);
+
+        return ajaxResponse;
+    }
+
+
+    private String getTableName(String tabValue) {
+        String tableName = "";
+        switch (tabValue) {
+            case "门急诊":
+                tableName = "dm_health_hl7_outrecord";
+                break;
+            case "检查":
+                tableName = "dm_health_hl7_exam";
+                break;
+            case "检验":
+                tableName = "dm_health_hl7_lab";
+                break;
+            case "处方":
+                tableName = "dm_health_hl7_eds";
+                break;
+        }
+        return tableName;
+    }
+
+
+    private List<Map<String, Object>> getColumns(String tableName) {
+        List<Map<String, Object>> columnComments = new ArrayList<>();//列名注释集合
+        try {
+            Class.forName(className);
+            Connection con = DriverManager.getConnection(url, dataBaseName, pwd);
+            String sql = "select e.* from " + tableName + " e";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery("show full columns from " + tableName);
+
+            while (rs.next()) {
+                Map<String, Object> map = new HashMap<>();
+                map.put("title", rs.getString("Comment").trim());
+                map.put("key", rs.getString("Field"));
+                columnComments.add(map);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return columnComments;
+    }
+
+    @RequestMapping(value = "/revertHl7", method = RequestMethod.POST)
+    public Object revertHl7(String tabValue, String viewId) {
+        List<Map<String, Object>> xmlDatas = new ArrayList<>();
+        switch (tabValue) {
+            case "门急诊":
+                xmlDatas = hl7Service.getOutpatDataXml(viewId);
+                break;
+            case "检查":
+                xmlDatas = hl7Service.getExamDataXml(viewId);
+                break;
+            case "检验":
+                xmlDatas = hl7Service.getLabDataXml(viewId);
+                break;
+            case "处方":
+                xmlDatas = hl7Service.getEdsDataXml(viewId);
+                break;
+        }
+        return changeXmlContent(tabValue, xmlDatas.get(0));
+    }
+
+    private Object changeXmlContent(String tabValue, Map<String, Object> params) {
+        BufferedReader br = null;
+        BufferedWriter bw = null;
+        String content = "";
+        String content1 = "";
+        Resource resource = null;
+
+        switch (tabValue) {
+            case "门急诊":
+                resource = new ClassPathResource("/static/upload/outpat_standard.xml");
+                break;
+            case "检查":
+                resource = new ClassPathResource("/static/upload/exam_standard.xml");
+                break;
+            case "检验":
+                resource = new ClassPathResource("/static/upload/lab_standard.xml");
+                break;
+            case "处方":
+                resource = new ClassPathResource("/static/upload/eds_standard.xml");
+                break;
+        }
+
+        try {
+            // 以下读取和写入都转成UTF-8 防止乱码
+            br = new BufferedReader(new InputStreamReader(resource.getInputStream(), "UTF-8"));
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                content = line;
+                content1 = content1 + content + '\n';
+            }
+            for (Map.Entry<String, Object> entry : params.entrySet()) {
+                if (entry.getKey() != null && !entry.getKey().equals("")) {
+                    content1 = content1.replaceAll("\\$\\{" + entry.getKey() + "\\}", String.valueOf(entry.getValue())).replace("null", "");
+                } else {
+                    content1 = content1.replaceAll("\\$\\{" + entry.getKey() + "\\}", "").replace("null", "");
+                }
+            }
+
+            bw.write(content1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (br != null)
+                    br.close();
+                if (bw != null)
+                    bw.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        Map<String, Object> ajaxResponse = new HashMap<>();
+
+        ajaxResponse.put("xmlData", content1);
+
+        ajaxResponse.put("success", true);
+
+        return ajaxResponse;
+    }
+
+    @RequestMapping(value = "/searchHl7", method = RequestMethod.POST)
+    public Object searchHl7(@Pagingable PagiParam pagi, @Sortingable SortParam sort, String tabValue, String empi) {
+        String tableName = getTableName(tabValue);
+
+        List<Map<String, Object>> initDatas = new ArrayList<>();
+        switch (tabValue) {
+            case "门急诊":
+                initDatas = hl7Service.searchOutpatHl7(empi);
+                break;
+            case "检查":
+                initDatas = hl7Service.searchExamHl7(empi);
+                break;
+            case "检验":
+                initDatas = hl7Service.searchLabHl7(empi);
+                break;
+            case "处方":
+                initDatas = hl7Service.searchEdsHl7(empi);
+                break;
+        }
+        Map<String, Object> ajaxResponse = new HashMap<>();
+
+        ajaxResponse.put("total", pagi.getTotalRows());
+        ajaxResponse.put("current", pagi.getCurrent());
+        ajaxResponse.put("pageSize", pagi.getPageSize());
+        ajaxResponse.put("initData", initDatas);
+        ajaxResponse.put("columnData", getColumns(tableName));
+
+        ajaxResponse.put("success", true);
+
+        return ajaxResponse;
+    }
+}

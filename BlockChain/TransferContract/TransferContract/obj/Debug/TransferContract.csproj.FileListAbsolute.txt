@@ -1,0 +1,7 @@
+D:\workspace1\workspace\BlockChain\TransferContract\TransferContract\bin\Debug\TransferContract.dll
+D:\workspace1\workspace\BlockChain\TransferContract\TransferContract\bin\Debug\TransferContract.pdb
+D:\workspace1\workspace\BlockChain\TransferContract\TransferContract\bin\Debug\Neo.SmartContract.Framework.dll
+D:\workspace1\workspace\BlockChain\TransferContract\TransferContract\obj\Debug\TransferContract.csprojAssemblyReference.cache
+D:\workspace1\workspace\BlockChain\TransferContract\TransferContract\obj\Debug\TransferContract.csproj.CopyComplete
+D:\workspace1\workspace\BlockChain\TransferContract\TransferContract\obj\Debug\TransferContract.dll
+D:\workspace1\workspace\BlockChain\TransferContract\TransferContract\obj\Debug\TransferContract.pdb
