@@ -14,7 +14,7 @@ import android.widget.ImageView;
  * @author YuXiu 2016-7-14
  * 
  * @param <T>
- *            数据类型
+ *            数据类型适配
  */
 public abstract class MyBaseAdapter<T> extends BaseAdapter {
 

@@ -111,12 +111,12 @@ public class MainActivity extends BaseBegPermissionActivity {
             }
 
             @Override
-            public void cancelTodo(int requestCode) {
+            public void cancelTodo(int requestCode) {//用户取消授权 
                     Toast.makeText(MainActivity.this,"用户取消授权",Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void settingBack(int requsetCode) {
+            public void settingBack(int requsetCode) {//设置返回
                 if (checkPermissions(begRWPermissons, BEGRWCODE)) {
                     builderDialog = new AlertDialog.Builder(MainActivity.this);
                     LayoutInflater inflater = getLayoutInflater();

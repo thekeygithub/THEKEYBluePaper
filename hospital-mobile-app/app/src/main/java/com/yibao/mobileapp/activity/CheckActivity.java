@@ -130,7 +130,7 @@ public class CheckActivity extends BaseActivity {
                 }
 
                 @Override
-                public void requestFail(String msg) {
+                public void requestFail(String msg) {//请求失败
                     dismissPDialog();
                     Toast.makeText(CheckActivity.this,msg,Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(CheckActivity.this, MsgActivity.class);
@@ -141,7 +141,7 @@ public class CheckActivity extends BaseActivity {
                 }
 
                 @Override
-                public void requestAbnormal(int code) {
+                public void requestAbnormal(int code) {//请求成功
                     Toast.makeText(CheckActivity.this,getString(R.string.net_error),Toast.LENGTH_SHORT).show();
                     dismissPDialog();
                     finish();
@@ -167,14 +167,14 @@ public class CheckActivity extends BaseActivity {
 //            Log.d(TAG, "图片已保存至本地");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        } catch (IOException e) {
+        } catch (IOException e) {//抛出异常
             e.printStackTrace();
         }
 
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v) {//点击
         switch (v.getId()){
             case R.id.title_back:
                 finish();
@@ -188,19 +188,19 @@ public class CheckActivity extends BaseActivity {
         public boolean handleMessage(Message msg) {
 //           Toast.makeText(MainActivity.this,"刷新",Toast.LENGTH_SHORT).show();
             progerBar.setProgress(progress++);
-            if(progress==90){
-                timer.cancel();
+            if(progress==90){//90
+                timer.cancel();//取消
             }
-            if(progress>5){
+            if(progress>5){//5
                 tvMsg.setText(getString(R.string.check_item_1));
             }
-            if(progress>10){
+            if(progress>10){//10
 //                tvMsg.setText(getString(R.string.check_item_3));
             }
-            if(progress>15){
+            if(progress>15){//15
                 tvMsg.setText(getString(R.string.check_item_3));
             }
-            if(progress>20){
+            if(progress>20){//20
                 tvMsg.setText(getString(R.string.check_item_4));
             }
             if(progress>25){

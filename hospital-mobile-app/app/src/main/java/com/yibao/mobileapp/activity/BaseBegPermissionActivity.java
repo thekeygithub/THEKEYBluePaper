@@ -48,7 +48,7 @@ public abstract class BaseBegPermissionActivity extends BaseActivity {
 
 
     /**
-     * 弹出请求权限对话框
+     * 弹出请求权限对话框，23
      */
     private void goBegPermission(String[] begPermissions,int requestCode) {
 
@@ -59,7 +59,7 @@ public abstract class BaseBegPermissionActivity extends BaseActivity {
 
 
     /**
-     * 去设置
+     * 去设置uri
      */
 
     private void gotoSetting() {
@@ -69,7 +69,7 @@ public abstract class BaseBegPermissionActivity extends BaseActivity {
         intent.setData(packageURI);
         startActivity(intent);
     }
-
+//方法复写
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String[] permissions, int[] grantResults) {
@@ -94,7 +94,7 @@ public abstract class BaseBegPermissionActivity extends BaseActivity {
     }
 
     /**
-     * 弹出去设置界面对话框
+     * 弹出去设置界面对话框，让用户设置
      */
     private void showGotoSetting(int requestCode) {
         final int code=requestCode;

@@ -15,7 +15,7 @@ import com.yibao.mobileapp.okhttp.CommonHttpCallback;
 import com.yibao.mobileapp.okhttp.UrlObject;
 
 
-public class GetVCode {
+public class GetVCode {//获取验证码
 	private String result = null;
 	private Context mContext = null;
 
@@ -23,11 +23,11 @@ public class GetVCode {
 		this.mContext = mContext;
 	}
 
-	public String getResult() {
+	public String getResult() {//获取结果
 		return result;
 	}
 
-	public void getVCode(String mobile) {
+	public void getVCode(String mobile) {//获取验证码
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("mobile", mobile);
 		params.put("type","1");

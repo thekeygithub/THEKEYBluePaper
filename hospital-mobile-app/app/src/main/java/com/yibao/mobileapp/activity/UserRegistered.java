@@ -15,7 +15,7 @@ import com.yibao.mobileapp.MainActivity;
 import com.yibao.mobileapp.R;
 import com.yibao.mobileapp.RegisterActivity;
 
-public class UserRegistered extends BaseActivity {
+public class UserRegistered extends BaseActivity {//用户注册
     private ProgressBar progressBar;
     private WebView webView;
     @Override

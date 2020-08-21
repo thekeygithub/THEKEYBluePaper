@@ -26,7 +26,7 @@ public class MoneyActivity extends BaseActivity {
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v) {//点击
         switch (v.getId()){
             case R.id.title_back:
                 Intent intent = new Intent(this,

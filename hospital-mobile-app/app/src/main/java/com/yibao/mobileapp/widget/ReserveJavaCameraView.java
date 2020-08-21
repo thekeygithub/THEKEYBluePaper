@@ -40,7 +40,7 @@ public class ReserveJavaCameraView extends CameraBridgeViewBase implements Previ
     private Thread mThread;
     private boolean mStopThread;
 
-    protected Camera mCamera;
+    protected Camera mCamera;//照相机
     protected JavaCameraFrame[] mCameraFrame;
     private SurfaceTexture mSurfaceTexture;
 

@@ -1,6 +1,7 @@
 package com.yibao.mobileapp.okhttp;
 
 /**
+ * 参数
  * Created by Administrator on 2017/7/12.
  */
 

@@ -61,7 +61,7 @@ public class CommonUtils {
                 true);
         return resizedBitmap;
     }
-    public static void toLogin(Context context){
+    public static void toLogin(Context context){//denglu
         clearUserInfo(context);
         Toast.makeText(context,context.getString(R.string.pls_relogin),Toast.LENGTH_SHORT).show();
         Intent intent=new Intent(context,RegisterActivity.class);
@@ -75,7 +75,7 @@ public class CommonUtils {
         builder.show();
     }
 
-    public static AlertDialog getProgressDialog(Context context) {
+    public static AlertDialog getProgressDialog(Context context) {//提示
         AlertDialog.Builder builder = new AlertDialog.Builder(context,R.style.AlertDialog);
         // LayoutInflater inflater = (LayoutInflater) context
         // .getSystemService(Context.LAYOUT_INFLATER_SERVICE);

@@ -7,6 +7,7 @@ import com.tencent.bugly.Bugly;
 import java.io.File;
 
 /**
+ * 用户申请适配器
  * Created by Administrator on 2017/7/17.
  */
 

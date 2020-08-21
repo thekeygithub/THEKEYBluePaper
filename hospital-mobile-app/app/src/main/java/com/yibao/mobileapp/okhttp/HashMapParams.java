@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 /**
  * 公共参数
- * 
+ * 字段解析
  * @author WY01
  * 
  */

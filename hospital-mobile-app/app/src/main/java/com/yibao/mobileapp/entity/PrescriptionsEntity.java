@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
+ * 描述实体
  * Created by root on 2018/4/18.
  */
 

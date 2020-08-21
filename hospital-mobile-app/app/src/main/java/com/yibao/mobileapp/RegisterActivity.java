@@ -29,6 +29,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 /**
+ * 注册
  * Created by Administrator on 2017/7/24.
  */
 

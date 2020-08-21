@@ -3,6 +3,7 @@ package com.yibao.mobileapp.okhttp;
 import com.yibao.mobileapp.activity.BaseActivity;
 
 /**
+ * URL配置
  * Created by Administrator on 2017/7/12.
  */
 

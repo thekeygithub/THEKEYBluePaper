@@ -78,7 +78,7 @@ public class OpenCvCameraActivity extends BaseActivity implements CameraBridgeVi
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {//创建
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_cv_camera);
         initTitle("");
@@ -129,7 +129,7 @@ public class OpenCvCameraActivity extends BaseActivity implements CameraBridgeVi
 //
 //    }
 
-    private void pay(String bitmap){
+    private void pay(String bitmap){//支付
         showPDialog();
         tvMsg.setText(getString(R.string.paying_pls_wating));
         HashMap<String,String> params=(HashMap<String,String>) getIntent().getSerializableExtra("paymap");
@@ -153,7 +153,7 @@ public class OpenCvCameraActivity extends BaseActivity implements CameraBridgeVi
             }
 
             @Override
-            public void requestFail(String msg) {
+            public void requestFail(String msg) {//请求失败
                 dismissPDialog();
                 Intent intent=new Intent(OpenCvCameraActivity.this,MsgActivity.class);
                 intent.putExtra("flag",3);
@@ -163,7 +163,7 @@ public class OpenCvCameraActivity extends BaseActivity implements CameraBridgeVi
             }
 
             @Override
-            public void requestAbnormal(int code) {
+            public void requestAbnormal(int code) {//请求成功
                 Toast.makeText(OpenCvCameraActivity.this,getString(R.string.net_error),Toast.LENGTH_SHORT).show();
                 dismissPDialog();
                 finish();
@@ -184,7 +184,7 @@ public class OpenCvCameraActivity extends BaseActivity implements CameraBridgeVi
     }
 
     @Override
-    public void onCameraViewStarted(int width, int height){
+    public void onCameraViewStarted(int width, int height){//启动照相机
         matlin = new Mat();
 
         absoluteFaceSize = (int)(height * 0.2);

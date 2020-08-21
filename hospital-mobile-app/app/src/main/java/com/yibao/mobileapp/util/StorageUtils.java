@@ -10,7 +10,7 @@ import java.io.IOException;
 
 /**
  * Provides application storage paths
- * 
+ * 缓存
  * @author Sergey Tarasevich (nostra13[at]gmail[dot]com)
  */
 public final class StorageUtils {

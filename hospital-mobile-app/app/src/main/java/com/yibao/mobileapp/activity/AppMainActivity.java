@@ -118,7 +118,7 @@ public class AppMainActivity extends BaseActivity {
                 break;
         }
     }
-
+//复写方法-停止
     @Override
     protected void onPause() {
         Log.i("test","onPause");
@@ -131,7 +131,7 @@ public class AppMainActivity extends BaseActivity {
         super.onResume();
         jsAfterAndroidCheck();
     }
-
+//检查
     private void tocheck(){
 
         Intent intent = new Intent(AppMainActivity.this, LiveDetectActivity.class);
@@ -248,7 +248,7 @@ public class AppMainActivity extends BaseActivity {
         }
 
     }
-
+//去APP检查
     private void toAppGACheck(){
         Intent intent = new Intent(AppMainActivity.this, CheckActivity.class);
         startActivityForResult(intent,START_LIVEDETECT);

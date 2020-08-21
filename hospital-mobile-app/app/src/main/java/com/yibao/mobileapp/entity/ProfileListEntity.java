@@ -12,7 +12,7 @@ public class ProfileListEntity implements Serializable {
         return hospId;
     }
 
-    public void setHospId(String hospId) {
+    public void setHospId(String hospId) {//获取医院ID
         this.hospId = hospId;
     }
 

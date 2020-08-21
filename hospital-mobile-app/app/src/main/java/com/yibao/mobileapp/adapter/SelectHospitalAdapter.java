@@ -11,6 +11,7 @@ import com.yibao.mobileapp.R;
 import com.yibao.mobileapp.entity.UserInfoEntity;
 
 /**
+ * 医院选择
  * @author YuXiu 2016-7-25
  */
 public class SelectHospitalAdapter extends MyBaseAdapter<UserInfoEntity> implements View.OnClickListener {

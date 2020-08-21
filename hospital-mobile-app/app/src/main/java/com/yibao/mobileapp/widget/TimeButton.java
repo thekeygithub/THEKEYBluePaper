@@ -18,7 +18,7 @@ import android.view.View.OnClickListener;
 import com.yibao.mobileapp.R;
 
 /**
- * 鉴于经常用到获取验证码倒计时按钮 在网上也没有找到理想的 自己写一个
+ * 鉴于经常用到获取验证码倒计时按钮 在网上也没有找到理想的
  * 
  * 
  * @author yung

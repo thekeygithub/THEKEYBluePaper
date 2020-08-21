@@ -30,7 +30,7 @@ public class PasswordView extends RelativeLayout implements View.OnClickListener
     //因为要用Adapter中适配，用数组不能往adapter中填充
 
     private ImageView imgCancel;
-    private TextView tvForget;
+    private TextView tvForget;//忘记密码
     private int currentIndex = -1;    //用于记录当前输入密码格位置
 
     public PasswordView(Context context) {

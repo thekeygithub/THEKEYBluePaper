@@ -19,7 +19,7 @@ import com.yibao.mobileapp.entity.ProfileListEntity;
  */
 public class ProfileListAdapter extends MyBaseAdapter<ProfileListEntity> implements View.OnClickListener{
 
-	public ProfileListAdapter(Context context) {
+	public ProfileListAdapter(Context context) {//适配
 		super(context);
 		// TODO Auto-generated constructor stub
 	}
@@ -30,7 +30,7 @@ public class ProfileListAdapter extends MyBaseAdapter<ProfileListEntity> impleme
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(int position, View convertView, ViewGroup parent) {//获取view
 		// TODO Auto-generated method stub
 		ViewHolder holder = null;
 		if (convertView == null) {

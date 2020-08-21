@@ -46,7 +46,7 @@ public class NetworkConnectChangedReceiver extends BroadcastReceiver {
                 Toast.makeText(context, "无网络", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (mobNetInfo.isConnected() || wifiNetInfo.isConnected()) {
+            if (mobNetInfo.isConnected() || wifiNetInfo.isConnected()) {//已连接网络
                 Toast.makeText(context, "已连接网络", Toast.LENGTH_SHORT).show();
                 return;
             }

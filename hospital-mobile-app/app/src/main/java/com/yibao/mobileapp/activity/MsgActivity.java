@@ -17,9 +17,9 @@ import com.yibao.mobileapp.R;
  */
 
 public class MsgActivity extends BaseActivity {
-    private int flag;
-    private Button btnLeft, btnRight;
-    private TextView tvMsg,tvIss,tvIssMsg;
+    private int flag;//标签
+    private Button btnLeft, btnRight;//左右按钮
+    private TextView tvMsg,tvIss,tvIssMsg;//提示框
     private ImageView ivMsg;
 
     @Override
@@ -79,7 +79,7 @@ public class MsgActivity extends BaseActivity {
 
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v) {//点击
         switch (v.getId()){
             case R.id.btn_left:
                 //left

@@ -3,6 +3,7 @@ package com.yibao.mobileapp.entity;
 import java.io.Serializable;
 
 /**
+ * 用户详情实体
  * Created by root on 2018/4/17.
  */
 

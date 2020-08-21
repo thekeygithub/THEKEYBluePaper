@@ -6,7 +6,8 @@ import com.yibao.mobileapp.entity.UserInfoEntity;
 import java.util.ArrayList;
 
 /**
- * Created by root on 2018/4/25.
+ * 基类
+ Created by root on 2018/4/25.
  */
 
 public class CommonEntity {

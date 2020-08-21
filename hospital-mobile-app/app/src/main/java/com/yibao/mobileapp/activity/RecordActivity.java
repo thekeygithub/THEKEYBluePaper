@@ -46,7 +46,7 @@ public class RecordActivity extends BaseActivity implements CompoundButton.OnChe
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v) {//点击
         switch (v.getId()) {
             case R.id.title_back:
                 Intent intent = new Intent(this,
@@ -89,7 +89,7 @@ public class RecordActivity extends BaseActivity implements CompoundButton.OnChe
 
     HashMap<String, ArrayList<Integer>> hashMapGroup = new HashMap<>();
 
-    private void addCheckBox(ArrayList<PrescriptionsEntity> entities) {
+    private void addCheckBox(ArrayList<PrescriptionsEntity> entities) {//确认
         String date = "";
         for (int i = 0; i < entities.size(); i++) {
 
@@ -140,7 +140,7 @@ public class RecordActivity extends BaseActivity implements CompoundButton.OnChe
 
         }
     }
-    private void changeTotalPrice(){
+    private void changeTotalPrice(){//总价
         double pPrice=0;
         double reim=0;
         for (int i = 0; i < entities.size(); i++) {

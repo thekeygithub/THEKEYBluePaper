@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
 /**
+ * reverse
  * Created by obo on 15/12/4.
  */
 public class ReverseLayout extends RelativeLayout {

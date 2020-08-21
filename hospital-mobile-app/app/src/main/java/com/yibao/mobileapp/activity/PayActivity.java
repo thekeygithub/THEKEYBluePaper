@@ -56,7 +56,7 @@ public class PayActivity extends BaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /************* 第一种用法————开始 ***************/
+        /************* 第一种用法————开始 ******************/
         setContentView(R.layout.activity_payfor);
         initTitle(getString(R.string.ac_payfor_title));
         instance=this;
@@ -134,7 +134,7 @@ public class PayActivity extends BaseActivity{
     Handler handler = new Handler(new Handler.Callback() {
 
         @Override
-        public boolean handleMessage(Message msg) {
+        public boolean handleMessage(Message msg) {//消息处理
             // TODO Auto-generated method stub
             switch (msg.what) {
 
@@ -158,7 +158,7 @@ public class PayActivity extends BaseActivity{
         }
     });
     private String strTky;
-    private void changeToTKY(){
+    private void changeToTKY(){//更换为tky
         showPDialog();
         HashMapParams params=new HashMapParams();
         params.put("hospId",CommonEntity.HospitalId);
@@ -178,7 +178,7 @@ public class PayActivity extends BaseActivity{
             }
 
             @Override
-            public void requestFail(String msg) {
+            public void requestFail(String msg) {//请求失败
                 dismissPDialog();
                 Toast.makeText(PayActivity.this,msg,Toast.LENGTH_SHORT).show();
             }
@@ -191,7 +191,7 @@ public class PayActivity extends BaseActivity{
 
         }).doRequest(UrlObject.EXCHANGETOTKY,params);
     }
-    private void payByPwd(String pwd){
+    private void payByPwd(String pwd){//支付密码
         showPDialog();
 
          HashMapParams params=new HashMapParams();

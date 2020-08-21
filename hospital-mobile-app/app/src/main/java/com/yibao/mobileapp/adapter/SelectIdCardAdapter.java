@@ -12,6 +12,7 @@ import com.yibao.mobileapp.R;
 import com.yibao.mobileapp.entity.UserInfoEntity;
 
 /**
+ * 选择身份证适配器
  * @author YuXiu 2016-7-25
  */
 public class SelectIdCardAdapter extends MyBaseAdapter<UserInfoEntity> implements View.OnClickListener {

@@ -34,7 +34,7 @@ public abstract class BaseActivity extends AppCompatActivity implements OnClickL
         super.onResume();
 //        CommonUtils.shiftLanguage(CommonEntity.language,getBaseContext());
     }
-
+//显示会话
     protected void showPDialog(){
         if(progressView==null) {
             progressView = CommonUtils.getProgressDialog(BaseActivity.this);
@@ -44,7 +44,7 @@ public abstract class BaseActivity extends AppCompatActivity implements OnClickL
         }
 
     }
-    protected void dismissPDialog(){
+    protected void dismissPDialog(){//删除会话
         if(progressView!=null) {
             progressView.dismiss();
         }

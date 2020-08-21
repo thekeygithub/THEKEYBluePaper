@@ -3,6 +3,7 @@ package com.yibao.mobileapp.okhttp;
 import java.io.InputStream;
 
 /**
+ * HTTP返回
  * Created by Administrator on 2017/7/13.
  */
 

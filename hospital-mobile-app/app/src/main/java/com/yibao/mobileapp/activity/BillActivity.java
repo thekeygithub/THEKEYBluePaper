@@ -73,10 +73,10 @@ public class BillActivity extends BaseActivity {
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v) {//点击事件
         switch (v.getId()){
             case R.id.title_back:
-                finish();
+                finish();//结束
                 break;
             case R.id.btn_right:
                 finish();
